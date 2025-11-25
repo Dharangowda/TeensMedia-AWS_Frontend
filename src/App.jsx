@@ -35,7 +35,7 @@ function App() {
 
   const checkBanStatus = async (userId) => {
     try {
-      const response = await axios.get('http://localhost:5000/api/user/status', {
+      const response = await axios.get('http://ec2-16-171-21-37.eu-north-1.compute.amazonaws.com/:5000/api/user/status', {
         params: { userId }
       });
 
