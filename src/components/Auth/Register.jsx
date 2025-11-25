@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -12,17 +10,15 @@ const Register = ({ onRegister }) => {
   const [currentBg, setCurrentBg] = useState(0);
   const navigate = useNavigate();
 
-  // 3D wallpaper backgrounds array
   const backgrounds = [
-    'https://imgs.search.brave.com/0d-A1BAGHfs_OxjHSfs9TipPo1ildiQ6NIWutPXS0xU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAzLzA4LzIzLzEx/LzM2MF9GXzMwODIz/MTE1Ml85T2RDVE5S/dUVTY0t6ZU13WlFi/VU94QkhxMjM4Nnlr/NS5qcGc', // Abstract 3D shapes
-    'https://imgs.search.brave.com/NE8-xi-vKZiO-tzhVE04DRZ79y4WK36gRQDc_uZewwg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFnYVpsTzBXdkwu/anBn', // Neon 3D landscape
-    'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2370&auto=format&fit=crop', // Floating 3D islands
-    'https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop', // Cyberpunk city
-    'https://imgs.search.brave.com/Cwa31Rb89Pem8dEfrHTltJX0KM4_JL5ygSTM6UGHkJY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/d2FsbHBhcGVyLXVr/LmNvbS9jZG4vc2hv/cC9maWxlcy9NYXJ2/ZWwtQ29taWMtU3Ry/aXAtYnktTXVyaXZh/bWFydmVsLWNvbWlj/LXN0cmlwLW0tMTU5/NTAxLmpwZz92PTE3/MTE0NTAwNjgmd2lk/dGg9ODAw', // Abstract liquid
+    'https://imgs.search.brave.com/0d-A1BAGHfs_OxjHSfs9TipPo1ildiQ6NIWutPXS0xU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAzLzA4LzIzLzEx/LzM2MF9GXzMwODIz/MTE1Ml85T2RDVE5S/dUVTY0t6ZU13WlFi/VU94QkhxMjM4Nnlr/NS5qcGc',
+    'https://imgs.search.brave.com/NE8-xi-vKZiO-tzhVE04DRZ79y4WK36gRQDc_uZewwg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFnYVpsTzBXdkwu/anBn',
+    'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2370&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop',
+    'https://imgs.search.brave.com/Cwa31Rb89Pem8dEfrHTltJX0KM4_JL5ygSTM6UGHkJY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/d2FsbHBhcGVyLXVr/LmNvbS9jZG4vc2hv/cC9maWxlcy9NYXJ2/ZWwtQ29taWMtU3Ry/aXAtYnktTXVyaXZh/bWFydmVsLWNvbWlj/LXN0cmlwLW0tMTU5/NTAxLmpwZz92PTE3/MTE0NTAwNjgmd2lk/dGg9ODAw'
   ];
 
   useEffect(() => {
-    // Change background every 5 seconds
     const interval = setInterval(() => {
       setCurrentBg((prev) => (prev + 1) % backgrounds.length);
     }, 5000);
@@ -35,7 +31,7 @@ const Register = ({ onRegister }) => {
     setError('');
 
     try {
-      const response = await fetch('http://ec2-13-62-231-38.eu-north-1.compute.amazonaws.com:5000/api/auth/register', {
+      const response = await fetch('http://ec2-16-171-21-37.eu-north-1.compute.amazonaws.com:5000/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
@@ -69,7 +65,7 @@ const Register = ({ onRegister }) => {
         overflow: 'hidden'
       }}
     >
-      {/* Animated 3D Background */}
+      {/* BG */}
       <motion.div
         style={{
           position: 'absolute',
@@ -87,8 +83,7 @@ const Register = ({ onRegister }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       />
-      
-      {/* Dark overlay for better readability */}
+
       <div style={{
         position: 'absolute',
         top: 0,
@@ -99,7 +94,7 @@ const Register = ({ onRegister }) => {
         zIndex: 0
       }} />
 
-      {/* Floating Particles */}
+      {/* Particles */}
       {[...Array(10)].map((_, i) => (
         <motion.div
           key={i}
@@ -124,6 +119,7 @@ const Register = ({ onRegister }) => {
         />
       ))}
 
+      {/* CARD */}
       <motion.div 
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -139,20 +135,22 @@ const Register = ({ onRegister }) => {
           backdropFilter: 'blur(5px)'
         }}
       >
+
+        {/* TITLE */}
         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
           <motion.h1 
             style={{
               color: '#2d3436',
               fontFamily: '"Comic Neue", cursive',
               fontSize: '2.5rem',
-              margin: '0 0 10px 0',
-              textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              margin: '0 0 10px 0'
             }}
             animate={{ y: [0, -5, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             Teen's Media
-           </motion.h1>
+          </motion.h1>
+
           <motion.p 
             style={{
               color: '#636e72',
@@ -166,6 +164,7 @@ const Register = ({ onRegister }) => {
           </motion.p>
         </div>
 
+        {/* ERROR */}
         {error && (
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
@@ -176,15 +175,16 @@ const Register = ({ onRegister }) => {
               padding: '12px',
               borderRadius: '10px',
               marginBottom: '20px',
-              textAlign: 'center',
-              fontFamily: '"Comic Neue", cursive'
+              textAlign: 'center'
             }}
           >
             ⚠️ {error}
           </motion.div>
         )}
 
+        {/* FORM */}
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+
           <motion.div whileHover={{ scale: 1.02 }}>
             <input
               type="text"
@@ -197,12 +197,8 @@ const Register = ({ onRegister }) => {
                 borderRadius: '15px',
                 border: '3px solid #74b9ff',
                 fontSize: '1.2rem',
-                fontFamily: '"Comic Neue", cursive',
                 background: 'rgba(255,255,255,0.8)',
-                color: '#2d3436',
-                outline: 'none',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                borderColor: '#74b9ff'
+                outline: 'none'
               }}
               required
             />
@@ -220,17 +216,15 @@ const Register = ({ onRegister }) => {
                 borderRadius: '15px',
                 border: '3px solid #74b9ff',
                 fontSize: '1.2rem',
-                fontFamily: '"Comic Neue", cursive',
                 background: 'rgba(255,255,255,0.8)',
-                color: '#2d3436',
                 outline: 'none',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
                 borderColor: '#a55eea'
               }}
               required
             />
           </motion.div>
 
+          {/* UPDATED SIGN UP BUTTON */}
           <motion.button 
             type="submit" 
             disabled={isLoading}
@@ -244,60 +238,64 @@ const Register = ({ onRegister }) => {
               color: 'white',
               fontSize: '1.4rem',
               fontWeight: 'bold',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
-              boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+              cursor: 'pointer'
             }}
           >
             {isLoading ? (
-              <motion.span
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
+              <motion.span animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity }}>
                 🌀
               </motion.span>
             ) : (
               <>
-                Begin Journey!
-                <motion.span 
-                  animate={{ scale: [1, 1.5, 1] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
-                >
+                Sign Up
+                <motion.span animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1.5 }}>
                   ⚡
                 </motion.span>
               </>
             )}
           </motion.button>
+
         </form>
 
-        <motion.p 
-          style={{ 
-            textAlign: 'center', 
-            marginTop: '25px',
-            color: '#636e72',
-            fontFamily: '"Comic Neue", cursive',
-            fontSize: '1.1rem'
+        {/* 🔥 UPDATED BOTTOM SECTION */}
+        <motion.div
+          style={{
+            textAlign: 'center',
+            marginTop: '25px'
           }}
-          whileHover={{ scale: 1.05 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
         >
-          Already have an Account?{' '}
-          <span 
-            onClick={() => navigate('/login')}
+          <p
             style={{
-              color: '#e84393',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              textDecoration: 'underline wavy',
-              padding: '5px'
+              color: '#2d3436',
+              fontFamily: '"Comic Neue", cursive',
+              fontSize: '1.1rem'
             }}
           >
-           Login 
-          </span>
-        </motion.p>
+            Click below to go back to Login page
+          </p>
+
+          <motion.button
+            onClick={() => navigate('/login')}
+            whileHover={{ scale: 1.07 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              background: 'linear-gradient(45deg, #ff7675, #fdcb6e)',
+              padding: '14px 28px',
+              borderRadius: '20px',
+              border: 'none',
+              color: 'white',
+              fontSize: '1.2rem',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              fontFamily: '"Comic Neue", cursive'
+            }}
+          >
+            Login
+          </motion.button>
+        </motion.div>
+
       </motion.div>
     </motion.div>
   );
